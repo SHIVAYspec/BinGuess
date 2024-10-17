@@ -8,7 +8,7 @@ textStyle : List (Attribute msg)
 textStyle =
     [ style "margin" "0"
     , style "font-weight" "bold"
-    , style "font-size" "18px"
+    , style "font-size" "xxx-large"
     , style "font-family" "monospace"
     , style "border-radius" "8px"
     ]

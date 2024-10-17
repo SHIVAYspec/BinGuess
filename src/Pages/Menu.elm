@@ -120,7 +120,7 @@ view state =
                     , p textStyle [ text "and" ]
                     , input ([ type_ "number", placeholder "Upper Limit", value (String.fromInt e.upper), onInput SetUpper ] ++ textStyle) []
                     , p textStyle [ text ("I will guess it in " ++ getRequiredAttempts e ++ " attempts or less.") ]
-                    , button (textStyle ++ [ onClick Start ]) [ text "Start" ]
+                    , button (textStyle ++ [ style "background-color" "#A569BD", onClick Start ]) [ text "Start" ]
                     ]
 
             Started e ->

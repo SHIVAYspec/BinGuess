@@ -5,6 +5,7 @@ import Html exposing (Html, button, div, input, p, text)
 import Html.Attributes exposing (placeholder, style, type_, value)
 import Html.Events exposing (onClick, onInput)
 import Pages.Questions as Questions
+import Pages.Style exposing (layoutStyle, textStyle)
 
 
 type alias MenuState =
@@ -97,15 +98,6 @@ update actions state =
                     Started (Questions.update a s)
 
 
-styleSheet : List (Html.Attribute msg)
-styleSheet =
-    [ style "margin" "0"
-    , style "font-weight" "bold"
-    , style "font-size" "18px"
-    , style "font-family" "monospace"
-    ]
-
-
 getRequiredAttempts : MenuState -> String
 getRequiredAttempts menuState =
     if menuState.lower == menuState.upper then
@@ -117,20 +109,18 @@ getRequiredAttempts menuState =
 
 view : State -> Html Actions
 view state =
-    div [ style "margin" "12px" ]
+    div
+        (layoutStyle ++ [ style "margin" "12px" ])
         [ case state of
             Menu e ->
                 div
-                    [ style "display" "flex"
-                    , style "flex-direction" "column"
-                    , style "gap" "12px"
-                    ]
-                    [ p styleSheet [ text "Pick a number between" ]
-                    , input ([ type_ "number", placeholder "Lower Limit", value (String.fromInt e.lower), onInput SetLower ] ++ styleSheet) []
-                    , p styleSheet [ text "and" ]
-                    , input ([ type_ "number", placeholder "Upper Limit", value (String.fromInt e.upper), onInput SetUpper ] ++ styleSheet) []
-                    , p styleSheet [ text ("I will guess it in " ++ getRequiredAttempts e ++ " attempts or less.") ]
-                    , button (styleSheet ++ [ onClick Start ]) [ text "Start" ]
+                    layoutStyle
+                    [ p textStyle [ text "Think of a number between" ]
+                    , input ([ type_ "number", placeholder "Lower Limit", value (String.fromInt e.lower), onInput SetLower ] ++ textStyle) []
+                    , p textStyle [ text "and" ]
+                    , input ([ type_ "number", placeholder "Upper Limit", value (String.fromInt e.upper), onInput SetUpper ] ++ textStyle) []
+                    , p textStyle [ text ("I will guess it in " ++ getRequiredAttempts e ++ " attempts or less.") ]
+                    , button (textStyle ++ [ onClick Start ]) [ text "Start" ]
                     ]
 
             Started e ->
@@ -140,5 +130,11 @@ view state =
                 text ""
 
             Started _ ->
-                button [ onClick Reset ] [ text "reset" ]
+                button
+                    (textStyle
+                        ++ [ style "background-color" "#CD6155"
+                           , onClick Reset
+                           ]
+                    )
+                    [ text "Reset" ]
         ]

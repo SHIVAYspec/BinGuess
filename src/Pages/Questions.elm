@@ -1,7 +1,9 @@
 module Pages.Questions exposing (Actions, State, update, view)
 
 import Html exposing (Html, button, div, p, text)
+import Html.Attributes exposing (style)
 import Html.Events exposing (onClick)
+import Pages.Style exposing (layoutStyle, textStyle)
 
 
 type alias State =
@@ -35,19 +37,26 @@ update action state =
 view : State -> Html Actions
 view state =
     if state.lower >= state.upper then
-        div [] [ p [] [ text ("Result : " ++ String.fromInt state.lower) ] ]
+        div []
+            [ p textStyle [ text "The number that you picked was " ]
+            , p
+                [ style "font-size" "48px"
+                , style "text-align" "center"
+                ]
+                [ text (String.fromInt state.lower) ]
+            ]
 
     else
-        div []
-            [ p [] [ text (String.fromInt (getMid state)) ]
-            , p [] [ text (String.fromInt state.lower ++ " : " ++ String.fromInt state.upper) ]
-            , div []
-                [ if not (state.lower == getMid state) then
-                    button [ onClick LessThan ] [ text "Less Than" ]
+        div layoutStyle
+            [ p textStyle [ text ("Is " ++ String.fromInt (getMid state)) ]
 
-                  else
-                    text ""
-                , button [ onClick Equal ] [ text "Equal To" ]
-                , button [ onClick GreaterThan ] [ text "Greater Than" ]
-                ]
+            -- , p textStyle [ text (String.fromInt state.lower ++ " : " ++ String.fromInt state.upper) ]
+            , if not (state.lower == getMid state) then
+                button (textStyle ++ [ style "background-color" "yellow", onClick LessThan ]) [ text "Less Than" ]
+
+              else
+                text ""
+            , button (textStyle ++ [ onClick Equal ]) [ text "Equal" ]
+            , button (textStyle ++ [ style "background-color" "#3498DB", onClick GreaterThan ]) [ text "Greater Than" ]
+            , p textStyle [ text "to your choosen number?" ]
             ]

@@ -75,13 +75,11 @@ update actions state =
             case state of
                 Menu e ->
                     Started
-                        (Questions.getInit
-                            (if e.lower <= e.upper then
-                                { lower = e.lower, upper = e.upper }
+                        (if e.lower <= e.upper then
+                            { lower = e.lower, upper = e.upper }
 
-                             else
-                                { lower = e.upper, upper = e.lower }
-                            )
+                         else
+                            { lower = e.upper, upper = e.lower }
                         )
 
                 Started _ ->

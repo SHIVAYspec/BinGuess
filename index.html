@@ -4387,7 +4387,7 @@ function _Browser_load(url)
 var $author$project$Pages$Menu$Menu = function (a) {
 	return {$: 'Menu', a: a};
 };
-var $author$project$Pages$Menu$initMenu = {lower: 0, upper: 1234};
+var $author$project$Pages$Menu$initMenu = {lower: 0, upper: 15000};
 var $author$project$Pages$Menu$init = $author$project$Pages$Menu$Menu($author$project$Pages$Menu$initMenu);
 var $elm$core$Basics$EQ = {$: 'EQ'};
 var $elm$core$Basics$GT = {$: 'GT'};
@@ -5326,8 +5326,7 @@ var $elm$html$Html$input = _VirtualDom_node('input');
 var $author$project$Pages$Style$layoutStyle = _List_fromArray(
 	[
 		A2($elm$html$Html$Attributes$style, 'display', 'flex'),
-		A2($elm$html$Html$Attributes$style, 'flex-direction', 'column'),
-		A2($elm$html$Html$Attributes$style, 'gap', '12px')
+		A2($elm$html$Html$Attributes$style, 'flex-direction', 'column')
 	]);
 var $elm$virtual_dom$VirtualDom$map = _VirtualDom_map;
 var $elm$html$Html$map = $elm$virtual_dom$VirtualDom$map;
@@ -5396,6 +5395,7 @@ var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
 var $author$project$Pages$Style$textStyle = _List_fromArray(
 	[
 		A2($elm$html$Html$Attributes$style, 'margin', '0'),
+		A2($elm$html$Html$Attributes$style, 'padding', '24px'),
 		A2($elm$html$Html$Attributes$style, 'font-weight', 'bold'),
 		A2($elm$html$Html$Attributes$style, 'font-size', 'xxx-large'),
 		A2($elm$html$Html$Attributes$style, 'font-family', 'monospace'),
@@ -5472,7 +5472,7 @@ var $author$project$Pages$Questions$view = function (state) {
 						])),
 				_List_fromArray(
 					[
-						$elm$html$Html$text('Equal')
+						$elm$html$Html$text('Equal to')
 					])),
 				A2(
 				$elm$html$Html$button,
@@ -5492,7 +5492,7 @@ var $author$project$Pages$Questions$view = function (state) {
 				$author$project$Pages$Style$textStyle,
 				_List_fromArray(
 					[
-						$elm$html$Html$text('to your choosen number?')
+						$elm$html$Html$text('your choosen number?')
 					]))
 			]));
 };
@@ -5503,7 +5503,10 @@ var $author$project$Pages$Menu$view = function (state) {
 			$author$project$Pages$Style$layoutStyle,
 			_List_fromArray(
 				[
-					A2($elm$html$Html$Attributes$style, 'margin', '12px')
+					A2($elm$html$Html$Attributes$style, 'margin', '12px'),
+					A2($elm$html$Html$Attributes$style, 'max-width', '100%'),
+					A2($elm$html$Html$Attributes$style, 'max-height', '100%'),
+					A2($elm$html$Html$Attributes$style, 'overflow', 'auto')
 				])),
 		_List_fromArray(
 			[

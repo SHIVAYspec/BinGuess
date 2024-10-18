@@ -19,7 +19,7 @@ type State
 
 initMenu : MenuState
 initMenu =
-    { lower = 0, upper = 1234 }
+    { lower = 0, upper = 15000 }
 
 
 init : State
@@ -110,7 +110,13 @@ getRequiredAttempts menuState =
 view : State -> Html Actions
 view state =
     div
-        (layoutStyle ++ [ style "margin" "12px" ])
+        (layoutStyle
+            ++ [ style "margin" "12px"
+               , style "max-width" "100%"
+               , style "max-height" "100%"
+               , style "overflow" "auto"
+               ]
+        )
         [ case state of
             Menu e ->
                 div

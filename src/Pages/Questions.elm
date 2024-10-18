@@ -56,7 +56,7 @@ view state =
 
               else
                 text ""
-            , button (textStyle ++ [ onClick Equal ]) [ text "Equal" ]
+            , button (textStyle ++ [ onClick Equal ]) [ text "Equal to" ]
             , button (textStyle ++ [ style "background-color" "#3498DB", onClick GreaterThan ]) [ text "Greater Than" ]
-            , p textStyle [ text "to your choosen number?" ]
+            , p textStyle [ text "your choosen number?" ]
             ]

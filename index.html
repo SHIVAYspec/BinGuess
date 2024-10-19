@@ -5396,10 +5396,10 @@ var $author$project$Pages$Style$textStyle = _List_fromArray(
 	[
 		A2($elm$html$Html$Attributes$style, 'margin', '0'),
 		A2($elm$html$Html$Attributes$style, 'padding', '24px'),
-		A2($elm$html$Html$Attributes$style, 'font-weight', 'bold'),
+		A2($elm$html$Html$Attributes$style, 'border-radius', '8px'),
 		A2($elm$html$Html$Attributes$style, 'font-size', 'xxx-large'),
-		A2($elm$html$Html$Attributes$style, 'font-family', 'monospace'),
-		A2($elm$html$Html$Attributes$style, 'border-radius', '8px')
+		A2($elm$html$Html$Attributes$style, 'font-weight', 'bold'),
+		A2($elm$html$Html$Attributes$style, 'font-family', 'monospace')
 	]);
 var $elm$html$Html$Attributes$type_ = $elm$html$Html$Attributes$stringProperty('type');
 var $elm$html$Html$Attributes$value = $elm$html$Html$Attributes$stringProperty('value');
@@ -5407,6 +5407,13 @@ var $author$project$Pages$Questions$Equal = {$: 'Equal'};
 var $author$project$Pages$Questions$GreaterThan = {$: 'GreaterThan'};
 var $author$project$Pages$Questions$LessThan = {$: 'LessThan'};
 var $elm$core$Basics$ge = _Utils_ge;
+var $author$project$Pages$Style$headingStyle = _List_fromArray(
+	[
+		A2($elm$html$Html$Attributes$style, 'text-align', 'center'),
+		A2($elm$html$Html$Attributes$style, 'font-size', 'xxx-large'),
+		A2($elm$html$Html$Attributes$style, 'font-weight', 'bold'),
+		A2($elm$html$Html$Attributes$style, 'font-family', 'monospace')
+	]);
 var $elm$core$Basics$not = _Basics_not;
 var $author$project$Pages$Questions$view = function (state) {
 	return (_Utils_cmp(state.lower, state.upper) > -1) ? A2(
@@ -5423,11 +5430,7 @@ var $author$project$Pages$Questions$view = function (state) {
 					])),
 				A2(
 				$elm$html$Html$p,
-				_List_fromArray(
-					[
-						A2($elm$html$Html$Attributes$style, 'font-size', '48px'),
-						A2($elm$html$Html$Attributes$style, 'text-align', 'center')
-					]),
+				$author$project$Pages$Style$headingStyle,
 				_List_fromArray(
 					[
 						$elm$html$Html$text(
@@ -5443,9 +5446,7 @@ var $author$project$Pages$Questions$view = function (state) {
 				$author$project$Pages$Style$textStyle,
 				_List_fromArray(
 					[
-						$elm$html$Html$text(
-						'Is ' + $elm$core$String$fromInt(
-							$author$project$Pages$Questions$getMid(state)))
+						$elm$html$Html$text('Is your number')
 					])),
 				(!_Utils_eq(
 				state.lower,
@@ -5489,10 +5490,12 @@ var $author$project$Pages$Questions$view = function (state) {
 					])),
 				A2(
 				$elm$html$Html$p,
-				$author$project$Pages$Style$textStyle,
+				$author$project$Pages$Style$headingStyle,
 				_List_fromArray(
 					[
-						$elm$html$Html$text('your choosen number?')
+						$elm$html$Html$text(
+						$elm$core$String$fromInt(
+							$author$project$Pages$Questions$getMid(state)) + '?')
 					]))
 			]));
 };

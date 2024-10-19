@@ -3,7 +3,7 @@ module Pages.Questions exposing (Actions, State, update, view)
 import Html exposing (Html, button, div, p, text)
 import Html.Attributes exposing (style)
 import Html.Events exposing (onClick)
-import Pages.Style exposing (layoutStyle, textStyle)
+import Pages.Style exposing (headingStyle, layoutStyle, textStyle)
 
 
 type alias State =
@@ -40,15 +40,13 @@ view state =
         div []
             [ p textStyle [ text "The number that you picked was " ]
             , p
-                [ style "font-size" "48px"
-                , style "text-align" "center"
-                ]
+                headingStyle
                 [ text (String.fromInt state.lower) ]
             ]
 
     else
         div layoutStyle
-            [ p textStyle [ text ("Is " ++ String.fromInt (getMid state)) ]
+            [ p textStyle [ text "Is your number" ]
 
             -- , p textStyle [ text (String.fromInt state.lower ++ " : " ++ String.fromInt state.upper) ]
             , if not (state.lower == getMid state) then
@@ -58,5 +56,5 @@ view state =
                 text ""
             , button (textStyle ++ [ onClick Equal ]) [ text "Equal to" ]
             , button (textStyle ++ [ style "background-color" "#3498DB", onClick GreaterThan ]) [ text "Greater Than" ]
-            , p textStyle [ text "your choosen number?" ]
+            , p headingStyle [ text (String.fromInt (getMid state) ++ "?") ]
             ]
